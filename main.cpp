@@ -7,7 +7,7 @@ DS::List<int> fibonacci(int n) {
     DS::List<int> list(arr, 2);
 
     for (int i = 1; i < n; i++) {
-        list.append(list.get(i) + list.get(i - 1));
+        list.append(list[i] + list.get(i - 1));
     }
     return list;
 }
@@ -21,7 +21,7 @@ int main() {
 
     DS::List<int> fibSeq = fibonacci(15);
     for (size_t i = 0; i < fibSeq.Length(); i++) {
-        printf("%d, ", fibSeq.get(i));
+        printf("%d, ", fibSeq[i]);
     }
     printf("\n");
 
@@ -33,7 +33,7 @@ int main() {
         list.append(i);
     }
     for (size_t i = 0; i < list.Length(); i++) {
-        printf("%d, ", list.get(i));
+        printf("%d, ", list[i]);
     }
     printf("\n");
 
@@ -45,6 +45,6 @@ int main() {
     strings.append(DS::String("Kenobi!"));
 
     for (size_t i = 0; i < strings.Length(); i++) {
-        printf("%s\n", strings.get(i).get());
+        printf("%s\n", strings[i].get());
     }
 }

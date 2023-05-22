@@ -72,6 +72,11 @@ namespace DS {
     }
 
     template<typename T>
+    T List<T>::operator[](size_t index) {
+        return get(index);
+    }
+
+    template<typename T>
     size_t List<T>::Length() {
         return length;
     }

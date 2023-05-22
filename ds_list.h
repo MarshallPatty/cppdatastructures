@@ -17,6 +17,7 @@ namespace DS {
             void append(T x);
             void prepend(T x);
             T get(size_t index);
+            T operator[](size_t index);
             size_t Length();
     };
 }
