@@ -37,6 +37,15 @@ int main() {
     }
     printf("\n");
 
+
+    // concat lists
+    fibSeq.concat(list);
+    fibSeq += list;
+    for (size_t i = 0; i < fibSeq.Length(); i++) {
+        printf("%d, ", fibSeq[i]);
+    }
+    printf("\n");
+
     // list of strings
     DS::List<DS::String> strings = DS::List<DS::String>();
     strings.append(DS::String("Hello"));

@@ -68,6 +68,18 @@ namespace DS {
     }
 
     template<typename T>
+    void List<T>::concat(List<T> list) {
+        resizeToFit(length + list.length);
+        memcpy(array + length, list.array, list.length * sizeof(T));
+        length += list.length;
+    }
+
+    template<typename T>
+    void List<T>::operator+=(List<T> list) {
+        concat(list);
+    }
+
+    template<typename T>
     T List<T>::get(size_t index) {
         return array[index];
     }

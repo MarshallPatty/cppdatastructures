@@ -16,6 +16,8 @@ namespace DS {
             List(T arr[], size_t length);
             void append(T x);
             void prepend(T x);
+            void concat(List<T> list);
+            void operator+=(List<T> list);
             T get(size_t index);
             T operator[](size_t index);
             size_t Length();
