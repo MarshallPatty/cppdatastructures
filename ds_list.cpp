@@ -1,75 +1,78 @@
 #include "ds_list.h"
+#include "ds_string.h"
 
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
 namespace DS {
-    List::List() {
+    // explicit instantiations
+    template class List<int>;
+    template class List<float>;
+    template class List<String>;
+
+    template<typename T>
+    List<T>::List() {
         size = 0;
         length = 0;
         array = NULL;
     }
 
-    List::List(int arr[], size_t len) {
+    template<typename T>
+    List<T>::List(T arr[], size_t len) {
         length = len;
         size = len;
-        array = (int *)malloc(size * sizeof(int));
-        memcpy(array, arr, len * sizeof(int));
+        array = (T *)malloc(size * sizeof(T));
+        memcpy(array, arr, len * sizeof(T));
     }
 
-    void List::resizeToFit(size_t newLength) {
+    template<typename T>
+    void List<T>::resizeToFit(size_t newLength) {
         if (newLength == 0)
             return;
 
         if (size == 0) {
             size = newLength;
-            array = (int *)malloc(newLength * sizeof(int));
+            array = (T *)malloc(newLength * sizeof(T));
             return;
         }
 
         // allocate more space if needed
         if (newLength > size) {
             size *= 2;
-            int *newArray = (int *)malloc(size * sizeof(int));
-            memcpy(newArray, array, length * sizeof(int));
+            T *newArray = (T *)malloc(size * sizeof(T));
+            memcpy(newArray, array, length * sizeof(T));
             free(array);
             array = newArray;
-            printf("Resized! %zu\n", size);
         }
     }
 
-    void List::append(int n) {
+    template<typename T>
+    void List<T>::append(T n) {
         resizeToFit(length + 1);
         length++;
         array[length - 1] = n;
     }
 
-    void List::prepend(int n) {
+    template<typename T>
+    void List<T>::prepend(T n) {
         resizeToFit(length + 1);
 
         if (length != 0) {
-            memcpy(array + 1, array, length * sizeof(int));
+            memcpy(array + 1, array, length * sizeof(T));
         }
 
         array[0] = n;
         length++;
     }
 
-    int List::get(size_t index) {
+    template<typename T>
+    T List<T>::get(size_t index) {
         return array[index];
     }
 
-    void List::print() {
-        if (length == 0) {
-            printf("[]\n");
-            return;
-        }
-
-        printf("[");
-        for (size_t i = 0; i < length - 1; i++) {
-            printf("%d, ", array[i]);
-        }
-        printf("%d]\n", array[length - 1]);
+    template<typename T>
+    size_t List<T>::Length() {
+        return length;
     }
 }

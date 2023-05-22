@@ -2,9 +2,9 @@
 #include "ds_string.h"
 #include "ds_list.h"
 
-DS::List fibonacci(int n) {
+DS::List<int> fibonacci(int n) {
     int arr[] = {0, 1};
-    DS::List list(arr, 2);
+    DS::List<int> list(arr, 2);
 
     for (int i = 1; i < n; i++) {
         list.append(list.get(i) + list.get(i - 1));
@@ -19,16 +19,32 @@ int main() {
     str1.append(&str2);
     printf("%s", str1.get());
 
-    DS::List fibSeq = fibonacci(15);
-    fibSeq.print();
+    DS::List<int> fibSeq = fibonacci(15);
+    for (size_t i = 0; i < fibSeq.Length(); i++) {
+        printf("%d, ", fibSeq.get(i));
+    }
+    printf("\n");
 
 
     // prepending list
-    DS::List list = DS::List();
-    list.print();
+    DS::List<int> list = DS::List<int>();
     for (int i = 1; i <= 10; i++) {
         list.prepend(i);
         list.append(i);
     }
-    list.print();
+    for (size_t i = 0; i < list.Length(); i++) {
+        printf("%d, ", list.get(i));
+    }
+    printf("\n");
+
+    // list of strings
+    DS::List<DS::String> strings = DS::List<DS::String>();
+    strings.append(DS::String("Hello"));
+    strings.append(DS::String("There!"));
+    strings.append(DS::String("General"));
+    strings.append(DS::String("Kenobi!"));
+
+    for (size_t i = 0; i < strings.Length(); i++) {
+        printf("%s\n", strings.get(i).get());
+    }
 }

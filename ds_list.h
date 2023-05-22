@@ -4,19 +4,20 @@
 #include <stddef.h>
 
 namespace DS {
+    template<typename T>
     class List {
         private:
             size_t size;
             size_t length;
-            int *array;
+            T *array;
             void resizeToFit(size_t newLength);
         public:
             List();
-            List(int arr[], size_t length);
-            void append(int n);
-            void prepend(int n);
-            int get(size_t index);
-            void print();
+            List(T arr[], size_t length);
+            void append(T x);
+            void prepend(T x);
+            T get(size_t index);
+            size_t Length();
     };
 }
 
