@@ -38,8 +38,9 @@ namespace DS {
         }
 
         // allocate more space if needed
+        // resize to next muliple of size that's larger than newLength
         if (newLength > size) {
-            size *= 2;
+            size *= 1 + newLength / size;
             T *newArray = (T *)malloc(size * sizeof(T));
             memcpy(newArray, array, length * sizeof(T));
             free(array);
