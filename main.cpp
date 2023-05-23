@@ -44,5 +44,5 @@ int main() {
     strings.append(DS::String("General"));
     strings.append(DS::String("Kenobi!"));
 
-    /* std::cout << strings << std::endl; */
+    std::cout << strings << std::endl;
 }

@@ -27,7 +27,7 @@ namespace DS {
     }
 
 
-    std::ostream &operator<<(std::ostream &out, String &obj) {
+    std::ostream &operator<<(std::ostream &out, String obj) {
         out << obj.get();
         return out;
     }
