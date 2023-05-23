@@ -104,7 +104,7 @@ namespace DS {
 
                 if (index == 0) {
                     LLNode<T> *tmp = head->next;
-                    free(head);
+                    delete head;
                     head = tmp;
                     length--;
                     return;
@@ -115,7 +115,7 @@ namespace DS {
                     current = current->next;
                 }
                 LLNode<T> *next = current->next->next;
-                free(current->next);
+                delete current->next;
                 current->next = next;
                 length--;
             }
