@@ -25,4 +25,10 @@ namespace DS {
     char *String::get() {
         return string;
     }
+
+
+    std::ostream &operator<<(std::ostream &out, String &obj) {
+        out << obj.get();
+        return out;
+    }
 }

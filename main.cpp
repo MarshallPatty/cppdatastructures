@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdio.h>
 #include "ds_string.h"
 #include "ds_list.h"
@@ -17,13 +18,10 @@ int main() {
     DS::String str2("\tHello there!\n");
 
     str1.append(&str2);
-    printf("%s", str1.get());
+    std::cout << str1;
 
     DS::List<int> fibSeq = fibonacci(15);
-    for (size_t i = 0; i < fibSeq.Length(); i++) {
-        printf("%d, ", fibSeq[i]);
-    }
-    printf("\n");
+    std::cout << fibSeq << std::endl;
 
 
     // prepending list
@@ -32,19 +30,12 @@ int main() {
         list.prepend(i);
         list.append(i);
     }
-    for (size_t i = 0; i < list.Length(); i++) {
-        printf("%d, ", list[i]);
-    }
-    printf("\n");
-
+    std::cout << list << std::endl;
 
     // concat lists
     fibSeq.concat(list);
     fibSeq += list;
-    for (size_t i = 0; i < fibSeq.Length(); i++) {
-        printf("%d, ", fibSeq[i]);
-    }
-    printf("\n");
+    std::cout << fibSeq << std::endl;
 
     // list of strings
     DS::List<DS::String> strings = DS::List<DS::String>();
@@ -53,7 +44,5 @@ int main() {
     strings.append(DS::String("General"));
     strings.append(DS::String("Kenobi!"));
 
-    for (size_t i = 0; i < strings.Length(); i++) {
-        printf("%s\n", strings[i].get());
-    }
+    /* std::cout << strings << std::endl; */
 }

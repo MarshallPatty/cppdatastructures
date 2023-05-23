@@ -1,6 +1,7 @@
 #ifndef DS_LIST_H
 #define DS_LIST_H
 
+#include <iostream>
 #include <stddef.h>
 
 namespace DS {
@@ -22,6 +23,9 @@ namespace DS {
             T operator[](size_t index);
             size_t Length();
     };
+
+    template<typename T>
+    std::ostream &operator<<(std::ostream &out, List<T> &obj);
 }
 
 #endif
