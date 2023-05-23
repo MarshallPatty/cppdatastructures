@@ -14,8 +14,5 @@ main.o: main.cpp
 ds_string.o: ds_string.cpp
 	$(CC) $(CFLAGS) -c ds_string.cpp
 
-ds_list.o: ds_list.cpp
-	$(CC) $(CFLAGS) -c ds_list.cpp
-
 clean:
 	rm -rf *.o app
