@@ -91,14 +91,14 @@ namespace DS {
 
     template<typename T>
     std::ostream &operator<<(std::ostream &out, List<T> &obj) {
-        std::cout << '[';
+        out << '[';
         for (size_t i = 0; i < obj.Length() - 1; i++) {
-            std::cout << obj[i] << ",";
+            out << obj[i] << ",";
         }
         if (obj.Length() > 0) {
-            std::cout << obj[obj.Length() - 1];
+            out << obj[obj.Length() - 1];
         }
-        std::cout << ']';
+        out << ']';
         return out;
     }
 }
