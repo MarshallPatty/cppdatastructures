@@ -15,7 +15,6 @@ namespace DS {
             char *get();
     };
 
-    /* std::ostream &operator<<(std::ostream &out, String &obj); */
     std::ostream &operator<<(std::ostream &out, String obj);
 }
 
