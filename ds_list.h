@@ -42,6 +42,12 @@ namespace DS {
                 array = NULL;
             }
 
+            List(size_t len) {
+                length = len;
+                size = len;
+                array = (T *)malloc(size * sizeof(T));
+            }
+
             List(T arr[], size_t len) {
                 length = len;
                 size = len;
@@ -78,6 +84,15 @@ namespace DS {
 
             T get(size_t index) {
                 return array[index];
+            }
+
+            void set(size_t index, T value) {
+                array[index] = value;
+            }
+
+            T pop() {
+                length--;
+                return array[length];
             }
 
             T operator[](size_t index) {
