@@ -35,6 +35,23 @@ namespace DS {
                     array = newArray;
                 }
             }
+
+            void insertionSort() {
+                for (size_t i = 1; i < length; i++) {
+                    if (get(i) >= get(i - 1))
+                            continue;
+
+                    for (size_t j = i; j != 0; j--) {
+                        if (get(j) >= get(j - 1))
+                            break;
+
+                        T tmp = get(j);
+                        set(j, get(j - 1));
+                        set(j - 1, tmp);
+                    }
+                } 
+            }
+
         public:
             List() {
                 size = 0;
@@ -101,6 +118,10 @@ namespace DS {
 
             size_t Length() {
                 return length;
+            }
+
+            void sort() {
+                insertionSort();
             }
     };
 
