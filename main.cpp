@@ -3,6 +3,7 @@
 #include "ds_string.h"
 #include "ds_list.h"
 #include "ds_linkedlist.h"
+#include "ds_priorityqueue.h"
 
 DS::List<int> fibonacci(int n) {
     int arr[] = {0, 1};
@@ -12,6 +13,36 @@ DS::List<int> fibonacci(int n) {
         list.append(list[i] + list.get(i - 1));
     }
     return list;
+}
+
+void testPriorityQueue() {
+    std::cout << "\nTesting priority queue\n";
+    DS::PriorityQueue<int> pq = DS::PriorityQueue<int>();
+    for (int i = 10; i >= 1; i--) {
+        pq.push(i);
+    }
+    std::cout << pq << std::endl;
+    pq.pop();
+    pq.pop();
+    pq.pop();
+    std::cout << pq << std::endl;
+
+    std::cout << "from list (heapify)" << std::endl;
+    DS::List<int> list = DS::List<int>();
+    for (int i = 10; i >= 1; i--) {
+        list.append(i);
+    }
+    std::cout << "List: " << list << std::endl;
+    DS::PriorityQueue<int> pq2(list);
+    std::cout << "PriorityQueue: " << pq2 << std::endl;
+    while (pq2.Length() > 0) {
+        std::cout << pq2.pop() << std::endl;
+    }
+    // popping when length is zero
+    pq2.pop();
+    pq2.pop();
+    pq2.pop();
+    pq2.pop();
 }
 
 int main() {
@@ -31,6 +62,9 @@ int main() {
         list.prepend(i);
         list.append(i);
     }
+    std::cout << list << std::endl;
+    list.sort();
+    std::cout << "Sorting...\n";
     std::cout << list << std::endl;
 
     // concat lists
@@ -77,4 +111,7 @@ int main() {
     ll.remove(0);
     ll.remove(ll.Length() - 1);
     std::cout << ll << std::endl;
+
+    // testing priority queue
+    testPriorityQueue();
 }
