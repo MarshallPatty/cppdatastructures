@@ -7,13 +7,7 @@ project(cppdatastructures)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# add the DataStructures library
-add_subdirectory(DataStructures)
-list(APPEND EXTRA_LIBS DataStructures)
+enable_testing()
 
-# add the executable
-add_executable(cppdatastructures main.cpp)
-
-target_link_libraries(cppdatastructures PUBLIC ${EXTRA_LIBS})
-
-target_include_directories(cppdatastructures PUBLIC "${PROJECT_BINARY_DIR}")
+add_subdirectory(src)
+add_subdirectory(tests)

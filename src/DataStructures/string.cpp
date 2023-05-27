@@ -1,4 +1,4 @@
-#include "ds_string.h"
+#include <ds/string.h>
 
 #include <stdlib.h>
 #include <string.h>
