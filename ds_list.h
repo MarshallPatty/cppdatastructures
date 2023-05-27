@@ -15,6 +15,7 @@ namespace DS {
             size_t size;
             size_t length;
             T *array;
+            enum class SortMethod {INSERTION, MERGE, QUICK, BUCKET};
             void resizeToFit(size_t newLength) {
                 if (newLength == 0)
                     return;
@@ -50,6 +51,38 @@ namespace DS {
                         set(j - 1, tmp);
                     }
                 } 
+            }
+
+            void mergeSort(size_t leftIndex, size_t rightIndex) {
+                if (leftIndex == rightIndex) {
+                    return;
+                }
+                size_t midIndex = (rightIndex + leftIndex) / 2;
+                mergeSort(leftIndex, midIndex);
+                mergeSort(midIndex + 1, rightIndex);
+
+                // merge
+                size_t len = rightIndex - leftIndex + 1; 
+                T tmp[len];
+                memcpy(tmp, array + leftIndex, len * sizeof(T));
+
+                size_t leftPtr = 0;
+                size_t rightPtr = midIndex + 1 - leftIndex;
+                size_t currentPtr = 0;
+                while (leftPtr <= midIndex - leftIndex && rightPtr <= rightIndex - leftIndex) {
+                    if (tmp[leftPtr] > tmp[rightPtr]) {
+                        array[currentPtr] = tmp[rightPtr];
+                        rightPtr++;
+                    }
+                    else {
+                        array[currentPtr] = tmp[leftPtr];
+                        leftPtr++;
+                    }
+                    currentPtr++;
+                }
+
+                // memcpy the remainder
+                memcpy(array + leftIndex + currentPtr, tmp + (leftPtr <= midIndex - leftIndex ? leftPtr : rightPtr), (len - currentPtr) * sizeof(T));
             }
 
         public:
@@ -121,7 +154,15 @@ namespace DS {
             }
 
             void sort() {
-                insertionSort();
+                SortMethod method = SortMethod::INSERTION;
+                switch (method) {
+                    case SortMethod::MERGE:
+                        mergeSort(0, length - 1);
+                        break;
+                    case SortMethod::INSERTION:
+                        insertionSort();
+                        break;
+                }
             }
     };
 
