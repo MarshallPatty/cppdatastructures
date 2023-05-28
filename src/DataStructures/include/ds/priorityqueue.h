@@ -1,7 +1,7 @@
 #ifndef DS_PRIORITYQUEUE_H
 #define DS_PRIORITYQUEUE_H
 
-#include "ds_list.h"
+#include <ds/list.h>
 #include <iostream>
 #include <string.h>
 
