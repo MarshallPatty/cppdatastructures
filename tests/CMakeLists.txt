@@ -11,8 +11,9 @@ add_library(GTest::GTest INTERFACE IMPORTED)
 target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
 add_executable(ListTests ListTests.cpp)
-
 target_link_libraries(ListTests PRIVATE GTest::GTest DataStructures)
-
 add_test(ListTests ListTests)
 
+add_executable(PriorityQueueTests PriorityQueueTests.cpp)
+target_link_libraries(PriorityQueueTests PRIVATE GTest::GTest DataStructures)
+add_test(PriorityQueueTests PriorityQueueTests)
