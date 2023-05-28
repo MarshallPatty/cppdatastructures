@@ -22,7 +22,7 @@ namespace DS {
 
                 if (size == 0) {
                     size = newLength;
-                    array = (T *)malloc(newLength * sizeof(T));
+                    array = new T[size];
                     return;
                 }
 
@@ -30,9 +30,9 @@ namespace DS {
                 // resize to next muliple of size that's larger than newLength
                 if (newLength > size) {
                     size *= 1 + newLength / size;
-                    T *newArray = (T *)malloc(size * sizeof(T));
+                    T *newArray = new T[size];
                     memcpy(newArray, array, length * sizeof(T));
-                    free(array);
+                    delete array;
                     array = newArray;
                 }
             }
@@ -95,13 +95,13 @@ namespace DS {
             List(size_t len) {
                 length = len;
                 size = len;
-                array = (T *)malloc(size * sizeof(T));
+                array = new T[size];
             }
 
             List(T arr[], size_t len) {
                 length = len;
                 size = len;
-                array = (T *)malloc(size * sizeof(T));
+                array = new T[size];
                 memcpy(array, arr, len * sizeof(T));
             }
 
